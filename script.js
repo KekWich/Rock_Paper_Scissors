@@ -1,10 +1,11 @@
-// 1. 
+// 1. - 
 // Get computer to generate number - DONE
-// Asign the number to rock, papar, scissors
-// Show the result
+// Asign the number to rock, papar, scissors - 
+// Show the result - 
+// Create function - 
 
 // 2. 
-// Get plyer input
+// Get player input
 // Create if statemets that compare computer and player number
 // Make player selection case-insensitive
 
@@ -20,18 +21,39 @@
 
 
 let randomNumber = Math.floor(Math.random() * 3);
-let rock
+let playerSelection = prompt('Pick rock, paper or scissors');
 
 
-if(randomNumber === 0) {
-  console.log('You have got rock');
+function getComputerChoice() {
+  if(randomNumber === 0) {
+    computerMove = 'rock';
+  }
+  else if(randomNumber === 1) {
+    computerMove = 'paper';
+  }
+  else {
+    computerMove = 'scissors';
+  }
+  return computerMove;
 }
 
-else if(randomNumber === 1) {
-  console.log('You have got paper');
-}
-else {
-  console.log('You have got scissors');
+let computerSelection = getComputerChoice();
+
+function firstRound() {
+  if(computerSelection === 'rock' && playerSelection === 'rock') {
+    gameResult = 'DRAW!';
+  }
+  else if(computerSelection === 'paper' && playerSelection === 'rock') {
+    gameResult = 'LOSS!';
+  }
+  else if(computerSelection === 'scissors' && playerSelection === 'rock') {
+    gameResult = 'WIN!';
+  }
+    return gameResult;
 }
 
-console.log(randomNumber);
+console.log(firstRound())
+
+console.log(computerSelection);
+console.log(randomNumber)
+console.log(playerSelection)
