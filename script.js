@@ -1,13 +1,13 @@
 // 1. - 
 // Get computer to generate number - DONE
-// Asign the number to rock, papar, scissors - 
-// Show the result - 
-// Create function - 
+// Asign the number to rock, papar, scissors - DONE 
+// Show the result - DONE 
+// Create function - DONE
 
 // 2. 
-// Get player input
-// Create if statemets that compare computer and player number
-// Make player selection case-insensitive
+// Get player input - DONE
+// Create if statemets that compare computer and player number - DONE
+// Make player selection case-insensitive - DONE
 
 
 //3.
@@ -21,8 +21,8 @@
 
 
 let randomNumber = Math.floor(Math.random() * 3);
-let playerSelection = prompt('Pick rock, paper or scissors');
-
+let input = prompt('Pick rock, paper or scissors');
+let playerSelection = input.toLocaleLowerCase();
 
 function getComputerChoice() {
   if(randomNumber === 0) {
@@ -40,7 +40,7 @@ function getComputerChoice() {
 let computerSelection = getComputerChoice();
 
 function firstRound() {
-  if(computerSelection === 'rock' && playerSelection === 'rock') {
+  if(computerSelection === playerSelection) {
     gameResult = 'DRAW!';
   }
   else if(computerSelection === 'paper' && playerSelection === 'rock') {
@@ -48,6 +48,21 @@ function firstRound() {
   }
   else if(computerSelection === 'scissors' && playerSelection === 'rock') {
     gameResult = 'WIN!';
+  }
+  else if(computerSelection === 'scissors' && playerSelection === 'paper') {
+    gameResult = 'LOSS!';
+  }
+  else if(computerSelection === 'rock' && playerSelection === 'paper') {
+    gameResult = 'WIN!';
+  }
+  else if(computerSelection === 'rock' && playerSelection === 'scissors') {
+    gameResult = 'LOSS!';
+  }
+  else if(computerSelection === 'paper' && playerSelection === 'scissors') {
+    gameResult = 'WIN!';
+  }
+  else {
+    '';
   }
     return gameResult;
 }
