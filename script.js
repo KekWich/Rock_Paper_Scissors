@@ -1,74 +1,60 @@
-// 1. - 
-// Get computer to generate number - DONE
-// Asign the number to rock, papar, scissors - DONE 
-// Show the result - DONE 
-// Create function - DONE
+let playerPoints = 0;
+let computerPoints = 0;
 
-// 2. 
-// Get player input - DONE
-// Create if statemets that compare computer and player number - DONE
-// Make player selection case-insensitive - DONE
-
-
-//3.
-// Create game that plays 5 rouns of RPS
-// Use loop till one player gets 3 wins
-
-
-
-//---------------------------------------------------------------------------//
-
-
-
-let randomNumber = Math.floor(Math.random() * 3);
-let input = prompt('Pick rock, paper or scissors');
-let playerSelection = input.toLocaleLowerCase();
-
-function getComputerChoice() {
-  if(randomNumber === 0) {
-    computerMove = 'rock';
+function playRound() {
+  function getComputerChoice() {
+    let randomNumber = Math.floor(Math.random() * 3);
+    if(randomNumber === 0) {
+      computerMove = 'rock';
+    }
+    else if(randomNumber === 1) {
+      computerMove = 'paper';
+    }
+    else {
+      computerMove = 'scissors';
+    }
+    return computerMove;
   }
-  else if(randomNumber === 1) {
-    computerMove = 'paper';
-  }
-  else {
-    computerMove = 'scissors';
-  }
-  return computerMove;
-}
+  
+  let computerSelection = getComputerChoice();
 
-let computerSelection = getComputerChoice();
+  let input = prompt('Pick rock, paper or scissors');
+  let playerSelection = input.toLocaleLowerCase();
 
-function firstRound() {
   if(computerSelection === playerSelection) {
     gameResult = 'DRAW!';
   }
-  else if(computerSelection === 'paper' && playerSelection === 'rock') {
+  else if(
+    (computerSelection === 'paper' && playerSelection === 'rock') || 
+    (computerSelection === 'scissors' && playerSelection === 'paper') ||
+    (computerSelection === 'rock' && playerSelection === 'scissors')
+  )  {
     gameResult = 'LOSS!';
-  }
-  else if(computerSelection === 'scissors' && playerSelection === 'rock') {
-    gameResult = 'WIN!';
-  }
-  else if(computerSelection === 'scissors' && playerSelection === 'paper') {
-    gameResult = 'LOSS!';
-  }
-  else if(computerSelection === 'rock' && playerSelection === 'paper') {
-    gameResult = 'WIN!';
-  }
-  else if(computerSelection === 'rock' && playerSelection === 'scissors') {
-    gameResult = 'LOSS!';
-  }
-  else if(computerSelection === 'paper' && playerSelection === 'scissors') {
-    gameResult = 'WIN!';
+    computerPoints++;
   }
   else {
-    '';
+    gameResult = 'WIN!';
+    playerPoints++;
   }
-    return gameResult;
+  
 }
 
-console.log(firstRound())
+playRound();
+playRound();
+playRound();
+playRound();
+playRound();
 
-console.log(computerSelection);
-console.log(randomNumber)
-console.log(playerSelection)
+if (playerPoints >= 3) {
+  alert('Player has won!')
+}
+else if (computerPoints >= 3) {
+  alert('Computer has won!')
+}
+else {
+  alert('Noone has won!')
+}
+
+console.log(`Result: ${gameResult}`);
+console.log(`Player points: ${playerPoints}`);
+console.log(`Computer points: ${computerPoints}`);
